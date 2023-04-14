@@ -1,3 +1,4 @@
+# https://spin.atomicobject.com/2016/08/26/makefile-c-projects/
 CC = g++
 
 CFLAGS = -std=c++14 -Wall -Werror
@@ -14,7 +15,7 @@ DEPS := $(OBJS:.o=.d)
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
-CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
+CPPFLAGS ?= $(INC_FLAGS) -MMD -MP $(CFLAGS)
 
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
